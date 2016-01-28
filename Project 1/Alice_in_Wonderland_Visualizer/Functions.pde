@@ -60,14 +60,40 @@ void placePixel(char letter){
   letterViz.updatePixels();
 }
 
-void drawFrequencyGraph(){ //proccesings map function ***
-  background(0);
-  text("Bar Graph here.", 100, 100);
-}
-
 void drawLetterVisualization(){
   background(0);
   image(letterViz, 0, 0);
+}
+
+void drawFrequencyGraph(){ //proccesings map function ***
+  background(0);
+  int Max = findMax();
+  int Min = findMin();
+  text((char)(Max + 97) + " " + (char)(Min + 97) + " are max and min respectively", 100, 100);
+}
+
+int findMax(){
+  int Max = 0;
+  int maxValue = charCounter[0];
+  for(int i = 0; i < 26; i++){ //<>//
+    if(charCounter[i] > maxValue){ //<>//
+      maxValue = charCounter[i];
+      Max = i; //<>//
+    }
+  }
+  return Max;
+}
+
+int findMin(){
+  int Min = 0;
+  int minValue = charCounter[0];
+  for(int i = 0; i < 26; i++){
+    if(charCounter[i] < minValue){
+      minValue = charCounter[i];
+      Min = i;
+    }
+  }
+  return Min;
 }
 
 void preparePallete(){
