@@ -1,4 +1,4 @@
-void prepareFrequencies() {
+void prepareFrequencies() { //<>// //<>//
   for (int i = 0; i < 26; i++) {
     charCounter[i] = 0;
   } 
@@ -18,11 +18,11 @@ void prepareFrequencies() {
 }
 
 void SortChars() {
-  if (Character.isAlphabetic(line)){
+  if (Character.isAlphabetic(line)) {
     char letter = (char)Character.toLowerCase(line);
     charCounter[letter - ASCII_OFFSET]++;
     placePixel(letter);
-    if(letter == 'a') checkAlice();
+    if (letter == 'a') checkAlice();
   }
 }
 
@@ -50,45 +50,54 @@ void checkAlice() {
   }
 }
 
-void preparePixels(){
-  letterViz = createImage(420, 420, RGB);
+void preparePixels() {
+  letterViz = createImage(400, 400, RGB);
   letterViz.loadPixels();
 }
 
-void placePixel(char letter){
+void placePixel(char letter) {
   letterViz.pixels[pixelPosition] = pallete[letter - ASCII_OFFSET];
   letterViz.updatePixels();
 }
 
-void drawLetterVisualization(){
+void drawLetterVisualization() {
   background(0);
   image(letterViz, 0, 0);
 }
 
-void drawFrequencyGraph(){ //proccesings map function ***
+void drawFrequencyGraph() { //proccesings map function ***
   background(0);
   int Max = findMax();
   int Min = findMin();
-  text((char)(Max + 97) + " " + (char)(Min + 97) + " are max and min respectively", 100, 100);
+  for (int i = 0; i < 26; i++) {
+    float barHeight = map(charCounter[i], charCounter[Min], charCounter[Max], 10, height);
+    if (i == Max || i== Min) {
+      fill(255,215,0);
+      rect((i * (width/26)), 400, width/26, -barHeight);
+    } else {
+      fill(128, 0, 128);
+      rect((i * (width/26)), 400, width/26, -barHeight);
+    }
+  }
 }
 
-int findMax(){
+int findMax() {
   int Max = 0;
   int maxValue = charCounter[0];
-  for(int i = 0; i < 26; i++){ //<>//
-    if(charCounter[i] > maxValue){ //<>//
+  for (int i = 0; i < 26; i++) {
+    if (charCounter[i] > maxValue) {
       maxValue = charCounter[i];
-      Max = i; //<>//
+      Max = i;
     }
   }
   return Max;
 }
 
-int findMin(){
+int findMin() {
   int Min = 0;
   int minValue = charCounter[0];
-  for(int i = 0; i < 26; i++){
-    if(charCounter[i] < minValue){
+  for (int i = 0; i < 26; i++) {
+    if (charCounter[i] < minValue) {
       minValue = charCounter[i];
       Min = i;
     }
@@ -96,7 +105,7 @@ int findMin(){
   return Min;
 }
 
-void preparePallete(){
+void preparePallete() {
   pallete[0] = color(153, 0, 0);
   pallete[1] = color(255, 51, 51);
   pallete[2] = color(153, 76, 0);

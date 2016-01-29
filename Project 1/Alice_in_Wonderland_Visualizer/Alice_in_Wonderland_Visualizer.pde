@@ -16,7 +16,7 @@ PImage letterViz;
 color[] pallete = new color[LETTERS_IN_ALPHABET];
 
 void setup() {
-  size(420, 420);
+  size(400, 400);
   preparePixels();
   preparePallete();
   prepareFrequencies();
