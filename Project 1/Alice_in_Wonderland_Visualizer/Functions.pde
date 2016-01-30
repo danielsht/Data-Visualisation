@@ -19,29 +19,29 @@ void prepareFrequencies() { //<>// //<>//
 
 void SortChars() {
   if (Character.isAlphabetic(line)) {
+    if ((char)line == 'A') checkAlice();
     char letter = (char)Character.toLowerCase(line);
     charCounter[letter - ASCII_OFFSET]++;
     placePixel(letter);
-    if (letter == 'a') checkAlice();
   }
 }
 
 void checkAlice() {
   int temp;
+  String Alice = "";
   try {
+    Alice += (char)line;
     reader.mark(4);
     temp = reader.read();
-    if (temp == 108 || temp == 76) {
-      temp = reader.read();
-      if (temp == 105 || temp == 73) {
-        temp = reader.read();
-        if (temp == 99 || temp == 67) {
-          temp = reader.read();
-          if (temp == 101 || temp == 69) {
-            aliceCounter++;
-          }
-        }
-      }
+    Alice += (char)temp;
+    temp = reader.read();
+    Alice += (char)temp;
+    temp = reader.read();
+    Alice += (char)temp;
+    temp = reader.read();
+    Alice += (char)temp;
+    if(Alice.equalsIgnoreCase("alice")){ //<>//
+      aliceCounter++; //<>//
     }
     reader.reset();
   }
@@ -63,6 +63,8 @@ void placePixel(char letter) {
 void drawLetterVisualization() {
   background(0);
   image(letterViz, 0, 0);
+  fill(255,215,0);
+  text("Alice Appears " + aliceCounter + " Times", 125, 385);
 }
 
 void drawFrequencyGraph() { //proccesings map function ***
