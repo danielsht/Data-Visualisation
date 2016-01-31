@@ -1,4 +1,4 @@
-void prepareFrequencies() { //<>// //<>//
+void prepareFrequencies() { //<>// //<>// //<>//
   for (int i = 0; i < 26; i++) {
     charCounter[i] = 0;
   } 
@@ -22,7 +22,15 @@ void SortChars() {
     if ((char)line == 'A') checkAlice();
     char letter = (char)Character.toLowerCase(line);
     charCounter[letter - ASCII_OFFSET]++;
-    placePixel(letter);
+    if (isAlice == 0) {
+      placePixel(letter);
+    }
+    else{
+      isAlice--;
+    }
+  } else {
+    letterViz.pixels[pixelPosition] = color(#FFFFFF);
+    letterViz.updatePixels();
   }
 }
 
@@ -33,15 +41,22 @@ void checkAlice() {
     Alice += (char)line;
     reader.mark(4);
     temp = reader.read();
-    Alice += (char)temp;
+    Alice += (char)temp; //<>//
     temp = reader.read();
     Alice += (char)temp;
     temp = reader.read();
     Alice += (char)temp;
     temp = reader.read();
     Alice += (char)temp;
-    if(Alice.equalsIgnoreCase("alice")){ //<>//
-      aliceCounter++; //<>//
+    if (Alice.equalsIgnoreCase("alice")) {
+      aliceCounter++;
+      temp = pixelPosition;
+      for (int i = 0; i < 5; i++) { 
+        letterViz.pixels[temp] = color(#000000);
+        letterViz.updatePixels();
+        temp++;
+      }
+      isAlice = 5;
     }
     reader.reset();
   }
@@ -63,7 +78,7 @@ void placePixel(char letter) {
 void drawLetterVisualization() {
   background(0);
   image(letterViz, 0, 0);
-  fill(255,215,0);
+  fill(255, 215, 0);
   text("Alice Appears " + aliceCounter + " Times", 125, 385);
 }
 
@@ -74,7 +89,7 @@ void drawFrequencyGraph() { //proccesings map function ***
   for (int i = 0; i < 26; i++) {
     float barHeight = map(charCounter[i], charCounter[Min], charCounter[Max], 10, height);
     if (i == Max || i== Min) {
-      fill(255,215,0);
+      fill(255, 215, 0);
       rect((i * (width/26)), 400, width/26, -barHeight);
     } else {
       fill(128, 0, 128);

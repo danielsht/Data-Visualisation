@@ -14,6 +14,7 @@ int[] charCounter = new int[LETTERS_IN_ALPHABET];
 
 PImage letterViz;
 color[] pallete = new color[LETTERS_IN_ALPHABET];
+int isAlice = 0;
 
 void setup() {
   size(400, 400);
