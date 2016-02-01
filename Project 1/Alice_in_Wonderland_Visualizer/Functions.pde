@@ -29,7 +29,7 @@ void SortChars() {
       isAlice--;
     }
   } else {
-    letterViz.pixels[pixelPosition] = color(#FFFFFF);
+    letterViz.pixels[pixelPosition] = color(#000000);
     letterViz.updatePixels();
   }
 }
@@ -52,7 +52,7 @@ void checkAlice() {
       aliceCounter++;
       temp = pixelPosition;
       for (int i = 0; i < 5; i++) { 
-        letterViz.pixels[temp] = color(#000000);
+        letterViz.pixels[temp] = color(#FFFFFF);
         letterViz.updatePixels();
         temp++;
       }
@@ -83,7 +83,7 @@ void drawLetterVisualization() {
 }
 
 void drawFrequencyGraph() { //proccesings map function ***
-  background(0);
+  background(#8D5FB4);
   int Max = findMax();
   int Min = findMin();
   for (int i = 0; i < 26; i++) {

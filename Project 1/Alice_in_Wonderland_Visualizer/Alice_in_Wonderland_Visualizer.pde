@@ -1,4 +1,7 @@
-BufferedReader reader; //<>// //<>//
+//Daniel Shteremberg Project 1 Alice in Wonderland Visualizer:  //<>//
+//click on the screen to see the second vizualization/the frequency of the characters.
+
+BufferedReader reader; //<>//
 final String fileName = "Alice's Adventures in Wonderland.txt";
 int line;
 int aliceCounter = 0;
