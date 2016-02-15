@@ -24,8 +24,4 @@ class Bag{
     }
   }
   
-  int size(){
-    return data.size();
-  }
-  
 }

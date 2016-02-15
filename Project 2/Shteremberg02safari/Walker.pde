@@ -1,6 +1,8 @@
 class Walker {
   Bag bag = new Bag();
   stack stack = new stack();
+  LList llist = new LList();
+  hashSet hash = new hashSet();
 
   final int MAX_VELOCITY = 1;
   final float NOISE_DELTA = random(0.1);
@@ -11,8 +13,6 @@ class Walker {
   PVector tendency;
   float xOffset;
   
-  ArrayList<Food> data = new ArrayList<Food>();
-
   public Walker(PVector initialLocation) {
     this.location = initialLocation;
     velocity = new PVector(0, 0);
@@ -40,8 +40,6 @@ class Walker {
     ellipse(location.x, location.y, WIDTH, WIDTH);
     fill(0, 0, 0);
     text(dataStructType, location.x, location.y);
-    bag.draw();
-    stack.draw();
   }
 
   boolean isTouching(Food f) {
@@ -55,14 +53,26 @@ class Walker {
     if (s.equals("stack")){
       stack.add(f);
     }
+    if(s.equals("linked list")){
+      llist.add(f);
+    }
+    if(s.equals("hash set")){
+      hash.add(f);
+    }
   }
   
   void remove(Food f, String s){
     if (s.equals("bag")) {
-      bag.remove(f);
+      bag.remove(f); //<>//
     }
     if (s.equals("stack")){
-      stack.remove(f);
+      stack.remove(f); //<>//
+    }
+    if (s.equals("linked list")){
+      llist.remove(f); //<>// //<>//
+    }
+    if(s.equals("hash set")){
+      hash.remove(f);
     }
   }
 }

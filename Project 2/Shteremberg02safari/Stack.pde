@@ -1,18 +1,22 @@
 class stack {
 
   Stack<Food> st = new Stack<Food>();
-  int stackCounter = 0;
-  
+
   void add(Food f) {
     st.push(f);
-    stackCounter++;
     f.location.x = 300;
-    f.location.y = (stackCounter + (f.diameter*2)) + (height - 200);
+    if (st.size() <= 1) {
+      f.location.y = height - 200;
+    } else {
+      f.location.y = (st.get(st.size()-2).location.y + 10);
+    }
   }
-  
-  void remove(Food f){
-    if( f.c == st.peek().c){
-      st.pop();
+
+  void remove(Food f) {
+    if (!st.empty()) {
+      if ( f.c == st.peek().c) {
+        st.pop();
+      }
     }
   }
 
