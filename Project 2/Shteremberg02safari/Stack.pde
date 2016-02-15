@@ -4,7 +4,7 @@ class stack {
 
   void add(Food f) {
     st.push(f);
-    f.location.x = 300;
+    f.location.x = 450;
     if (st.size() <= 1) {
       f.location.y = height - 200;
     } else {
@@ -25,5 +25,7 @@ class stack {
       fill(f.c);
       ellipse(f.location.x, f.location.y, 10, 10);
     }
+    fill(0,0,0);
+    text("Stack", 400, height - 180);
   }
 }

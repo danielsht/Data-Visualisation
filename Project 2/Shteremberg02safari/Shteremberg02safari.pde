@@ -1,4 +1,8 @@
-import java.util.*; //<>//
+//Daniel Shteremberg Project 2 For this project i did a bag (not unique, unordered and unsorted),  //<>//
+//a stack (not unique ordered unsorted), a Linked list (not unique ordered unsorted) 
+//and a hashset(unique unorderd and unsorted)
+
+import java.util.*;
 
 Walker walker;
 Walker stack;
@@ -19,7 +23,7 @@ void setup() {
   Hash = new Walker(new PVector(0, height - 300));
   AD = new addDelete();
   for (int i = 0; i < NUMBER_OF_COLORS; ++i) {
-    colors[i] = color(random(0, 200));
+    colors[i] = color(random(0, 255), random(0, 255), random(0, 255));
   }
   for (int i = 0; i < NUMBER_OF_FOODS; ++i) {
     PVector l = new PVector(random(0, width), random(0, height - 200));
@@ -29,7 +33,7 @@ void setup() {
 }
 
 void draw() {
-  background(55);
+  background(#151BAD);
   walker.walk();
   stack.walk();
   llist.walk();

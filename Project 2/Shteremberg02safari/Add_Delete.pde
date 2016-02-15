@@ -14,13 +14,13 @@ class addDelete{
   
   void draw(){ //<>//
     fill(0,0,0);
-    line(addSection1, 0, addSection1, (height - 200)); //<>//
+    line(addSection1, 0, addSection1, height); //<>//
     text("ADD", (addSection1/2), 10);
-    line(deleteSection1, 0, deleteSection1, (height - 200));
+    line(deleteSection1, 0, deleteSection1, height);
     text("DELETE", (deleteSection1 - (width/8)), 10);
-    line(addSection2, 0, addSection2, (height - 200));
+    line(addSection2, 0, addSection2, height);
     text("ADD", (addSection2 - (width/8)), 10);
-    line(deleteSection2, 0, deleteSection2, (height - 200));
+    line(deleteSection2, 0, deleteSection2, height);
     text("DELETE", (deleteSection2 - (width/8)), 10);
     line(0, height - 200, width, height - 200);
   }
