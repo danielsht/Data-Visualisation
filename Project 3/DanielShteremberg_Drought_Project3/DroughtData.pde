@@ -3,7 +3,6 @@ class DroughtData {
   Table droughtData;
 
   String state;
-  String county;
   float noDrought;
   float abnormallyDry;
   float moderateDrought;
@@ -38,7 +37,7 @@ class DroughtData {
       extremeDrought = Float.valueOf( row.getString( "D3" ) );
       exceptionalDrought = Float.valueOf( row.getString( "D4" ) );
 
-      if (state == this.state) {
+      if (this.state.equals(state)) {
         dataArr.add( new CountyData( state, county, noDrought, abnormallyDry, moderateDrought, severeDrought, extremeDrought, exceptionalDrought ) );
       }
     }
@@ -69,22 +68,22 @@ class DroughtData {
   }
 
   void drawCountyViz() {
-    background(0);
-    //int counterX = 0;
-    //int counterY = 50;
-    //float previousSize = 0;
-    //for ( CountyData cd : dataArr ) {
-    //  if ( ( counterX + cd.maxDrought ) > width ) { 
-    //    counterY += 100;
-    //    counterX = 0;
-    //  }
-    //  fill( colors[cd.maxSeverity] );
-    //  stroke( #FFFFFF );
-    //  rect( counterX, counterY, cd.maxDrought, 100 );
-    //  fill( 0 );
-    //  text( cd.county, ( counterX + 2 ), ( counterY + 15 ) );
-    //  previousSize = cd.maxDrought;
-    //  counterX += previousSize;
-    //}
-  //}
+    background(#FFFFFF); //<>//
+    int counterX = 0;
+    int counterY = 0;
+    float previousSize = 0;
+    for ( CountyData cd : dataArr ) {
+     if ( ( counterX + cd.maxDrought ) > width ) { 
+       counterY += 100;
+       counterX = 0;
+     }
+     fill( colors[cd.maxSeverity] );
+     stroke( #FFFFFF );
+     rect( counterX, counterY, cd.maxDrought, 100 );
+     fill( 0 );
+     text( cd.county, ( counterX + 2 ), ( counterY + 15 ) );
+     previousSize = cd.maxDrought;
+     counterX += previousSize;
+    }
+  }
 }

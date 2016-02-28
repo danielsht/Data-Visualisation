@@ -1,4 +1,4 @@
-DroughtData dData; //<>// //<>// //<>// //<>// //<>//
+DroughtData dData; //<>//
 Table droughtData;
 
 final String stateFile = "dm_export_state_20160223.csv";
@@ -47,7 +47,7 @@ void draw() {
     } 
     if ( overRect( counterX, counterY, dd.maxDrought, 100 ) ) {
       fill( colors[dd.maxSeverity], 127 );
-      while (state == DRAW_COUNTY_STATE) {
+      if (state == DRAW_COUNTY_STATE) {
         dd.drawCountyViz();
       }
       } else {
@@ -62,9 +62,9 @@ void draw() {
     }
   }
 
-  boolean overRect(int x, int y, float width, int height) {
-    if (mouseX >= x && mouseX <= x+width && 
-      mouseY >= y && mouseY <= y+height) {
+  boolean overRect( int x, int y, float width, int height ) {
+    if ( mouseX >= x && mouseX <= x+width && 
+      mouseY >= y && mouseY <= y+height ) {
       return true;
     } else {
       return false;
