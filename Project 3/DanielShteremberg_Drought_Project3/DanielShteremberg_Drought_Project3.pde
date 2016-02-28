@@ -1,10 +1,11 @@
-DroughtData dData; //<>// //<>// //<>//
+DroughtData dData; //<>// //<>// //<>// //<>//
 Table droughtData;
 
 final String stateFile = "dm_export_state_20160223.csv";
 final String countyFile = "dm_export_county_20160223.csv";
 
 ArrayList<DroughtData> dataArr = new ArrayList<DroughtData>();
+color[] colors = new color[6]; 
 
 void setup() {
   size(800, 800);
@@ -23,6 +24,13 @@ void setup() {
     dataArr.add( new DroughtData( state, noDrought, abnormallyDry, moderateDrought, severeDrought, extremeDrought, exceptionalDrought ) );
   }
 
+  colors[0] = color(#6F6D6D);
+  colors[1] = color(#ffff00);
+  colors[2] = color(#fcd37f);
+  colors[3] = color(#ffaa00);
+  colors[4] = color(#e60000);
+  colors[5] = color(#730000);
+
   for (DroughtData dd : dataArr) {
     println(dd.state);
   }
@@ -30,12 +38,20 @@ void setup() {
 
 void draw() {
   background(0);
-  int counter = 0;
-  for ( DroughtData dd : dataArr ){
-    fill( #BC0D0D );
-    rect( counter , 0, 10, 10 ); //<>//
-    counter += 10;
+  int counterX = 0;
+  int counterY = 0;
+  float previousSize = 0;
+  for ( DroughtData dd : dataArr ) {
+    if ((counterX + dd.maxDrought) > width) { 
+      counterY += 100;
+      counterX = 0;
+    }
+    fill( colors[dd.maxSeverity] );
+    stroke(#FFFFFF);
+    rect( counterX, counterY, dd.maxDrought, dd.maxDrought );
+    previousSize = dd.maxDrought;
+    counterX += previousSize;
   }
-  counter = 0;
-  
+  counterX = 0;
+  counterY = 0;
 }
