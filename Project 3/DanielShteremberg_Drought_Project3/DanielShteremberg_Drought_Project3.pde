@@ -5,13 +5,14 @@ final String stateFile = "dm_export_state_20160223.csv";
 
 ArrayList<DroughtData> dataArr = new ArrayList<DroughtData>();
 color[] colors = new color[6]; 
+String[] droughtText = new String[6]; 
 
 int state;
 final int DRAW_COUNTY_STATE = 1;
 final int DRAW_STATES_STATE = 0;
 
 void setup() {
-  size( 1200, 800 );
+  size( 1200, 750 );
   droughtData = loadTable( stateFile, "header" );
 
   for (TableRow row : droughtData.rows()) {
@@ -28,19 +29,36 @@ void setup() {
   }
 
   colors[0] = color( #6F6D6D );
-  colors[1] = color( #ffff00 );
-  colors[2] = color( #fcd37f );
+  colors[1] = color( #fcd37f );
+  colors[2] = color( #ffff00 );
   colors[3] = color( #ffaa00 );
-  colors[4] = color( #e60000 );
-  colors[5] = color( #730000 );
+  colors[4] = color( #730000 );
+  colors[5] = color( #e60000 );
+  
+  droughtText[0] = "No Drought";
+  droughtText[1] = "Abnormally Dry";
+  droughtText[2] = "Moderate Drought";
+  droughtText[3] = "Severe Drought";
+  droughtText[4] = "Extreme Drought";
+  droughtText[5] = "Exceptional Drought";
 }
 
 void draw() {
+  
   background(0);
-  int index = 0;
   int counterX = 0;
   int counterY = 50;
   float previousSize = 0;
+  
+  textAlign(CENTER);
+  fill(#FFC755);
+  text("Drought in the USA!", width/2, 25);
+  for( int i = 0; i < 6; i++ ) {
+    fill( colors[i] );
+    rect( ( ( i + 2 ) * ( height/6 ) ), height - 50, 10, 10 );
+    fill(#FFFFFF);
+    text( droughtText[i], ( ( i + 2 ) * ( height/6 ) + 10), height - 50 );
+  }
   for ( DroughtData dd : dataArr ) {
     if ( ( counterX + dd.maxDrought ) > width ) { 
       counterY += 100;
@@ -56,6 +74,7 @@ void draw() {
       stroke( #FFFFFF );
       rect( counterX, counterY, dd.maxDrought, 100 );
       fill( 0 );
+      textAlign(BASELINE);
       text( dd.state, ( counterX + 2 ), ( counterY + 15 ) );
       previousSize = dd.maxDrought;
       counterX += previousSize;
@@ -65,6 +84,7 @@ void draw() {
       stroke( #FFFFFF );
       rect( counterX, counterY, dd.maxDrought, 100 );
       fill( 0 );
+      textAlign(BASELINE);
       text( dd.state, ( counterX + 2 ), ( counterY + 15 ) );
       previousSize = dd.maxDrought;
       counterX += previousSize;

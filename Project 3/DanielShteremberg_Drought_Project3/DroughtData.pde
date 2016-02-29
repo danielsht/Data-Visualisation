@@ -69,14 +69,32 @@ class DroughtData {
 
   void drawCountyViz() {
     background( 0 );
-    int counterX = width / 2;
-    int counterY = height / 2;
+    int textX = 0;
+    int textY = 10;
+    int circleWidth = width / 2;
+    int circleHeight = height / 2;
+    
+    textAlign(CENTER);
+    fill(#FFC755);
+    text("Drought in the USA!", width/2, 25);
+    for ( int i = 0; i < 6; i++ ) {
+      fill( colors[i] );
+      rect( ( ( i + 2 ) * ( height/6 ) ), height - 50, 10, 10 );
+      fill(#FFFFFF);
+      text( droughtText[i], ( ( i + 2 ) * ( height/6 ) + 10), height - 50 );
+    }
+    textAlign(BASELINE);
     for ( CountyData cd : dataArr ) {
-     noFill();
-     stroke( colors[cd.maxSeverity] );
-     ellipse( counterX, counterY, cd.maxDrought, cd.maxDrought );
-     //fill( 0 );
-     //text( cd.county, ( counterX + 2 ), ( counterY + 15 ) );
+      noFill();
+      stroke( colors[cd.maxSeverity] );
+      ellipse( circleWidth, circleHeight, cd.maxDrought, cd.maxDrought );
+      fill( colors[cd.maxSeverity], 127 );
+      if ( ( textY + 10 ) > height ) { 
+        textY = 0;
+        textX += 150 ;
+      } 
+      text( cd.county, textX, textY );
+      textY += 10;
     }
   }
 }
