@@ -1,3 +1,10 @@
+//Daniel Shteremberg
+//Project 3 
+//All csv files came from http://droughtmonitor.unl.edu/MapsAndData/GISData.aspx
+//The purpose of this project was to show the state the USA's drought situation. 
+//The first visualization shows the country as a whole and the general situation of each state while the second shows each states counties 
+//situation. To access the second visualisation just click on the state the you want to investigate further. 
+
 DroughtData dData;
 Table droughtData;
 
@@ -34,7 +41,7 @@ void setup() {
   colors[3] = color( #ffaa00 );
   colors[4] = color( #730000 );
   colors[5] = color( #e60000 );
-  
+
   droughtText[0] = "No Drought";
   droughtText[1] = "Abnormally Dry";
   droughtText[2] = "Moderate Drought";
@@ -44,16 +51,16 @@ void setup() {
 }
 
 void draw() {
-  
+
   background(0);
   int counterX = 0;
   int counterY = 50;
   float previousSize = 0;
-  
+
   textAlign(CENTER);
   fill(#FFC755);
   text("Drought in the USA!", width/2, 25);
-  for( int i = 0; i < 6; i++ ) {
+  for ( int i = 0; i < 6; i++ ) {
     fill( colors[i] );
     rect( ( ( i + 2 ) * ( height/6 ) ), height - 50, 10, 10 );
     fill(#FFFFFF);
@@ -71,13 +78,13 @@ void draw() {
         noLoop();
         break;
       } else {
-      stroke( #FFFFFF );
-      rect( counterX, counterY, dd.maxDrought, 100 );
-      fill( 0 );
-      textAlign(BASELINE);
-      text( dd.state, ( counterX + 2 ), ( counterY + 15 ) );
-      previousSize = dd.maxDrought;
-      counterX += previousSize;
+        stroke( #FFFFFF );
+        rect( counterX, counterY, dd.maxDrought, 100 );
+        fill( 0 );
+        textAlign(BASELINE);
+        text( dd.state, ( counterX + 2 ), ( counterY + 15 ) );
+        previousSize = dd.maxDrought;
+        counterX += previousSize;
       }
     } else {
       fill( colors[dd.maxSeverity] );
@@ -103,7 +110,7 @@ boolean overRect( int x, int y, float width, int height ) {
 
 void mousePressed() {
   state = (state + 1) % 2;
-  if ( state == DRAW_STATES_STATE){
+  if ( state == DRAW_STATES_STATE) {
     loop();
   }
 }

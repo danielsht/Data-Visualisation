@@ -1,4 +1,4 @@
-class CountyData{
+class CountyData {
 
   Table droughtData;
 
@@ -24,10 +24,8 @@ class CountyData{
     this.severeDrought = severeDrought;
     this.extremeDrought = extremeDrought;
     this.exceptionalDrought = exceptionalDrought;
-    
+
     findMax();
-    
-    
   }
 
   void findMax() {
@@ -51,5 +49,4 @@ class CountyData{
       maxSeverity = 0;
     }
   }
-  
 }

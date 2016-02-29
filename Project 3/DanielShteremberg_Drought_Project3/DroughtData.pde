@@ -26,7 +26,7 @@ class DroughtData {
     this.exceptionalDrought = exceptionalDrought;
 
     droughtData = loadTable("dm_export_county_20160223.csv", "header");
-    for (TableRow row : droughtData.rows()) {
+    for ( TableRow row : droughtData.rows() ) {
 
       state = row.getString( "State" );
       String county = row.getString( "County" );
@@ -73,7 +73,7 @@ class DroughtData {
     int textY = 10;
     int circleWidth = width / 2;
     int circleHeight = height / 2;
-    
+
     textAlign(CENTER);
     fill(#FFC755);
     text("Drought in the USA!", width/2, 25);
