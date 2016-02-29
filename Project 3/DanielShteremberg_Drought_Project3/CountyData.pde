@@ -32,22 +32,22 @@ class CountyData{
 
   void findMax() {
     if (exceptionalDrought != 0) {
-      maxDrought = map(exceptionalDrought, 0, 100, 185, 200);
+      maxDrought = map(exceptionalDrought, 0, 100, 185*3, 200*3);
       maxSeverity = 5;
     } else if (extremeDrought != 0) {
-      maxDrought = map(extremeDrought, 0, 100, 168, 185);
+      maxDrought = map(extremeDrought, 0, 100, 168*3, 185*3);
       maxSeverity = 4;
     } else if (severeDrought != 0) {
-      maxDrought = map(severeDrought, 0, 100, 151, 168);
+      maxDrought = map(severeDrought, 0, 100, 151*3, 168*3);
       maxSeverity = 3;
     } else if (moderateDrought != 0) {
-      maxDrought = map(moderateDrought, 0, 100, 134, 151);
+      maxDrought = map(moderateDrought, 0, 100, 134*3, 151*3);
       maxSeverity = 2;
     } else if (abnormallyDry != 0) {
-      maxDrought = map(abnormallyDry, 0, 100, 117, 134);
+      maxDrought = map(abnormallyDry, 0, 100, 117*3, 134*3);
       maxSeverity = 1;
     } else {
-      maxDrought = map(noDrought, 0, 100, 100, 117);
+      maxDrought = map(noDrought, 0, 100, 100*3, 117*3);
       maxSeverity = 0;
     }
   }

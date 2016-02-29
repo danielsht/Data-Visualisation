@@ -68,22 +68,15 @@ class DroughtData {
   }
 
   void drawCountyViz() {
-    background(#FFFFFF); //<>//
-    int counterX = 0;
-    int counterY = 0;
-    float previousSize = 0;
+    background( 0 );
+    int counterX = width / 2;
+    int counterY = height / 2;
     for ( CountyData cd : dataArr ) {
-     if ( ( counterX + cd.maxDrought ) > width ) { 
-       counterY += 100;
-       counterX = 0;
-     }
-     fill( colors[cd.maxSeverity] );
-     stroke( #FFFFFF );
-     rect( counterX, counterY, cd.maxDrought, 100 );
-     fill( 0 );
-     text( cd.county, ( counterX + 2 ), ( counterY + 15 ) );
-     previousSize = cd.maxDrought;
-     counterX += previousSize;
+     noFill();
+     stroke( colors[cd.maxSeverity] );
+     ellipse( counterX, counterY, cd.maxDrought, cd.maxDrought );
+     //fill( 0 );
+     //text( cd.county, ( counterX + 2 ), ( counterY + 15 ) );
     }
   }
 }

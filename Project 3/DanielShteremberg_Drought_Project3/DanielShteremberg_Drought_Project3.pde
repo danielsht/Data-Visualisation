@@ -1,4 +1,4 @@
-DroughtData dData; //<>//
+DroughtData dData;
 Table droughtData;
 
 final String stateFile = "dm_export_state_20160223.csv";
@@ -37,6 +37,7 @@ void setup() {
 
 void draw() {
   background(0);
+  int index = 0;
   int counterX = 0;
   int counterY = 50;
   float previousSize = 0;
@@ -49,10 +50,18 @@ void draw() {
       fill( colors[dd.maxSeverity], 127 );
       if (state == DRAW_COUNTY_STATE) {
         dd.drawCountyViz();
-      }
+        noLoop();
+        break;
       } else {
-        fill( colors[dd.maxSeverity] );
+      stroke( #FFFFFF );
+      rect( counterX, counterY, dd.maxDrought, 100 );
+      fill( 0 );
+      text( dd.state, ( counterX + 2 ), ( counterY + 15 ) );
+      previousSize = dd.maxDrought;
+      counterX += previousSize;
       }
+    } else {
+      fill( colors[dd.maxSeverity] );
       stroke( #FFFFFF );
       rect( counterX, counterY, dd.maxDrought, 100 );
       fill( 0 );
@@ -61,16 +70,20 @@ void draw() {
       counterX += previousSize;
     }
   }
+}
 
-  boolean overRect( int x, int y, float width, int height ) {
-    if ( mouseX >= x && mouseX <= x+width && 
-      mouseY >= y && mouseY <= y+height ) {
-      return true;
-    } else {
-      return false;
-    }
+boolean overRect( int x, int y, float width, int height ) {
+  if ( mouseX >= x && mouseX <= x+width && 
+    mouseY >= y && mouseY <= y+height ) {
+    return true;
+  } else {
+    return false;
   }
+}
 
-  void mousePressed() {
-    state = (state + 1) % 2;
+void mousePressed() {
+  state = (state + 1) % 2;
+  if ( state == DRAW_STATES_STATE){
+    loop();
   }
+}
