@@ -3,7 +3,7 @@
 import sqlite3
 
 def printDB():
-	conn = sqlite3.connect('/Users/danielshteremberg/Documents/SMU/Data/Data-Visualisation/Project 4/songs.sqlite3.db')
+	conn = sqlite3.connect('songs.sqlite3.db')
 	conn.text_factory = str
 
 	c = conn.cursor()
@@ -14,7 +14,7 @@ def printDB():
 	conn.close()
 	
 def addGenre():
-	conn = sqlite3.connect('/Users/danielshteremberg/Documents/SMU/Data/Data-Visualisation/Project 4/songs.sqlite3.db')
+	conn = sqlite3.connect('songs.sqlite3.db')
 	conn.text_factory = str
 
 	c = conn.cursor()
@@ -30,7 +30,7 @@ def addGenre():
 	conn.close()
 
 def addAlbum():
-	conn = sqlite3.connect('/Users/danielshteremberg/Documents/SMU/Data/Data-Visualisation/Project 4/songs.sqlite3.db')
+	conn = sqlite3.connect('songs.sqlite3.db')
 	conn.text_factory = str
 
 	c = conn.cursor()
@@ -50,7 +50,7 @@ def addAlbum():
 	conn.close()
 	
 def addArtist():
-	conn = sqlite3.connect('/Users/danielshteremberg/Documents/SMU/Data/Data-Visualisation/Project 4/songs.sqlite3.db')
+	conn = sqlite3.connect('songs.sqlite3.db')
 	conn.text_factory = str
 
 	c = conn.cursor()
@@ -66,7 +66,7 @@ def addArtist():
 	conn.close()
 	
 def addSong():
-	conn = sqlite3.connect('/Users/danielshteremberg/Documents/SMU/Data/Data-Visualisation/Project 4/songs.sqlite3.db')
+	conn = sqlite3.connect('songs.sqlite3.db')
 	conn.text_factory = str
 
 	c = conn.cursor()
